@@ -1,0 +1,9 @@
+.emailMenu{
+    @apply float-left w-2/12 h-screen bg-gray-200 pl-7 xl:pl-10
+}
+.compose{
+    @apply border-2 bg-emerald-600 text-white font-semibold border-emerald-600 px-5 py-2 mt-36 xl:mt-48
+}
+.folderNames{
+    @apply space-y-3 xl:space-y-5 mt-10 cursor-pointer
+}
