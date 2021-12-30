@@ -1,5 +1,6 @@
-import React, {useRef} from 'react';
-import {user1, user2} from '../../users';
+import React, {useRef, useEffect} from 'react';
+import {user1, user2, userDetails} from '../../users';
+import {useNavigate} from 'react-router-dom';
 import './Login.css';
 
 export let currentUser;
@@ -8,6 +9,8 @@ const Login = () => {
 
     const emailRef = useRef();
     const passwordRef = useRef();
+
+    const navigate = useNavigate();
 
     const login = (e) =>{
         e.preventDefault();
@@ -19,6 +22,7 @@ const Login = () => {
         }
         if(JSON.stringify(user) === JSON.stringify(user1)){
             currentUser = "user1";
+            navigate("/dashboard")
         }
         else if(JSON.stringify(user) === JSON.stringify(user2)){
             currentUser = "user2";
@@ -26,8 +30,12 @@ const Login = () => {
         else{
             alert("Please enter valid credentials")
         }
-        console.log(currentUser);
     }
+
+    useEffect(()=>{
+    localStorage.setItem("user1", JSON.stringify(userDetails));
+    localStorage.setItem("user2", JSON.stringify(userDetails));
+    })
 
     return (
         <div className="loginPage">
