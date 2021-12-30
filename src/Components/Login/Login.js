@@ -3,8 +3,6 @@ import {user1, user2, userDetails} from '../../users';
 import {useNavigate} from 'react-router-dom';
 import './Login.css';
 
-export let currentUser;
-
 const Login = () => {
 
     const emailRef = useRef();
@@ -21,11 +19,11 @@ const Login = () => {
             password,
         }
         if(JSON.stringify(user) === JSON.stringify(user1)){
-            currentUser = "user1";
+            localStorage.setItem("currentUser", "user1");
             navigate("/dashboard")
         }
         else if(JSON.stringify(user) === JSON.stringify(user2)){
-            currentUser = "user2";
+            localStorage.setItem("currentUser", "user2");
         }
         else{
             alert("Please enter valid credentials")

@@ -1,0 +1,15 @@
+.mailList{
+    @apply float-left w-2/12 h-screen bg-gray-100 pt-16
+}
+.singleMail{
+    @apply border-2 p-2 cursor-pointer
+}
+.deleteIcon{
+    @apply text-red-400
+}
+.senderAndIcon{
+    @apply flex items-center justify-between
+}
+.placeHolder{
+    @apply font-semibold text-lg xl:text-xl px-2 mt-32
+}
