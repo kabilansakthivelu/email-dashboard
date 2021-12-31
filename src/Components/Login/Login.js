@@ -20,10 +20,11 @@ const Login = () => {
         }
         if(JSON.stringify(user) === JSON.stringify(user1)){
             localStorage.setItem("currentUser", "user1");
-            navigate("/dashboard")
+            navigate("/dashboard");
         }
         else if(JSON.stringify(user) === JSON.stringify(user2)){
             localStorage.setItem("currentUser", "user2");
+             navigate("/dashboard");
         }
         else{
             alert("Please enter valid credentials")
