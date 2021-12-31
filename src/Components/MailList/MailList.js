@@ -3,7 +3,7 @@ import Mail from '../Mail/Mail';
 import {AiFillDelete} from 'react-icons/ai';
 import './MailList.css';
 
-const MailList = ({data, folderName}) => {
+const MailList = ({data, folderName, deleteMail}) => {
 
     const [mailContent, setMailContent] = useState();
 
@@ -19,11 +19,20 @@ const MailList = ({data, folderName}) => {
         <h1 className="folderName">{folderName}</h1>
             {folderName ?
             data.map((item)=>{
+
+                let mailClassName;
+                if(item.isRead){
+                    mailClassName = "singleMailRead";
+                }
+                else{
+                    mailClassName = "singleMailUnRead"
+                }
+
                 return (
-                    <div key={item.id} className="singleMail" onClick={()=>{viewMail(item.id)}}>
+                    <div key={item.id} className={mailClassName} onClick={()=>{viewMail(item.id)}}>
                     <div className="senderAndIcon">
                     <h1><b>{item.from}</b></h1>
-                    <AiFillDelete className="deleteIcon"/>
+                    <AiFillDelete className="deleteIcon" onClick={()=>{deleteMail(folderName, item.id)}}/>
                     </div>
                     <p>{item.Subject}</p> 
                     </div>

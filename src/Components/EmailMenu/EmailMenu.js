@@ -23,7 +23,17 @@ const EmailMenu = () => {
 
     const sentItemsCall = () =>{
         setDataToPass(mails.sentItems);
-        setFolderName("Sent items");
+        setFolderName("Sent");
+    }
+
+    const deleteMail = (folderName, id) =>{
+        setMails({
+            ...mails,
+            folderName : mails.folderName.filter((items)=>{
+                return items.id !== id;
+            })
+        })
+        localStorage.setItem(currentUser, mails);
     }
 
     return (
@@ -32,13 +42,13 @@ const EmailMenu = () => {
             <button className="compose">Compose Mail</button>
             <div className="folderNames">
             <h1 onClick={inboxCall} className="links">Inbox</h1>
-            <h1 onClick={sentItemsCall} className="links">Sent items</h1>
+            <h1 onClick={sentItemsCall} className="links">Sent</h1>
             <h1 className="links">Drafts</h1>
             <h1 className="links">Trash</h1>
             <h1 className="links">Important</h1>
             </div>
         </div>
-        <MailList data={dataToPass} folderName={folderName}/>
+        <MailList data={dataToPass} folderName={folderName} deleteMail={deleteMail}/>
         </>
     )
 }

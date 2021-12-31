@@ -27,7 +27,7 @@ export const userDetails = {Inbox:[{
     isRead : true,
 }
 ],
-    sentItems:[{
+    Sent:[{
     id:1,
     from: "Test sent items 1",
     Subject: "Test subject 123",

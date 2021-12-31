@@ -1,8 +1,11 @@
 .mailList{
-    @apply float-left w-2/12 h-screen bg-gray-100
+    @apply float-left w-2/12 h-screen bg-gray-200
 }
-.singleMail{
+.singleMailRead{
     @apply border-2 p-2 cursor-pointer rounded-md
+}
+.singleMailUnRead{
+    @apply border-2 p-2 cursor-pointer rounded-md bg-white
 }
 .deleteIcon{
     @apply text-red-500

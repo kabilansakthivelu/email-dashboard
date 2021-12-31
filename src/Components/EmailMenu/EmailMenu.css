@@ -1,5 +1,5 @@
 .emailMenu{
-    @apply float-left w-2/12 h-screen bg-gray-200 pl-5 xl:pl-10
+    @apply float-left w-2/12 h-screen bg-gray-300 pl-5 xl:pl-10
 }
 .compose{
     @apply border-2 bg-emerald-600 text-white font-semibold border-emerald-600 px-3 xl:px-5 py-2 mt-36 xl:mt-48 rounded-md
