@@ -11,19 +11,19 @@ export const userDetails = {Inbox:[{
     id:1,
     from: "User 123",
     Subject: "Test subject 123",
-    content : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam at labore sapiente aliquam est voluptatibus dolores, nulla ipsum beatae molestias.",
-    isRead : true,
+    content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    isRead: true,
 },{
     id:2,
     from: "User 456",
     Subject: "Test subject 456",
-    content : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam at labore sapiente aliquam est voluptatibus dolores, nulla ipsum beatae molestias.",
-    isRead : true,
+    content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    isRead: true,
 },{
     id:3,
     from: "User 123",
     Subject: "Test subject 789",
-    content : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam at labore sapiente aliquam est voluptatibus dolores, nulla ipsum beatae molestias.",
+    content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
     isRead : true,
 }
 ],
@@ -31,6 +31,6 @@ export const userDetails = {Inbox:[{
     id:1,
     from: "Test sent items 1",
     Subject: "Test subject 123",
-    content : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam at labore sapiente aliquam est voluptatibus dolores, nulla ipsum beatae molestias.",
+    content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
 }]
 }

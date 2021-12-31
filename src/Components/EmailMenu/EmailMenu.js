@@ -8,6 +8,8 @@ const EmailMenu = () => {
 
     const [dataToPass, setDataToPass] = useState([]);
 
+    const [folderName, setFolderName] = useState("");
+
     const currentUser = localStorage.getItem("currentUser");
 
     useEffect(()=>{
@@ -16,10 +18,12 @@ const EmailMenu = () => {
 
     const inboxCall = () =>{
         setDataToPass(mails.Inbox);
+        setFolderName("Inbox");
     }
 
     const sentItemsCall = () =>{
         setDataToPass(mails.sentItems);
+        setFolderName("Sent items");
     }
 
     return (
@@ -34,7 +38,7 @@ const EmailMenu = () => {
             <h1 className="links">Important</h1>
             </div>
         </div>
-        <MailList data={dataToPass}/>
+        <MailList data={dataToPass} folderName={folderName}/>
         </>
     )
 }

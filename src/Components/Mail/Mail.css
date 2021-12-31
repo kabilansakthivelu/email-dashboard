@@ -1,0 +1,9 @@
+.individualMail{
+    @apply float-left
+}
+.mailContent{
+    @apply mt-10 px-6 space-y-2
+}
+.content{
+    @apply indent-8 pt-10
+}

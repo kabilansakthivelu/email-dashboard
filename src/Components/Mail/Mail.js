@@ -1,9 +1,21 @@
-import React from 'react'
+import React from 'react';
+import './Mail.css';
 
-const Mail = () => {
+const Mail = ({mailContent}) => {
+
     return (
-        <div>
-            <h1>mail</h1>
+        <div className="individualMail">
+            {mailContent ? 
+            (
+                <div className="mailContent">
+                <p><b>From: </b>{mailContent.from}</p>
+                <p><b>Subject: </b>{mailContent.Subject}</p>
+                <p className="content">{mailContent.content}</p>
+                </div>
+            )
+            :
+           ""
+            }
         </div>
     )
 }
