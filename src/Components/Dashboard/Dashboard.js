@@ -32,8 +32,6 @@ const Dashboard = () => {
 
     const deleteMail = (folderNamePassed, id) =>{
 
-        // let inboxItems = mails.Inbox;
-        // let sentItems = mails.Sent;
         let folder = [];
         if(folderNamePassed === "Inbox"){
             folder = inboxData;
@@ -50,13 +48,6 @@ const Dashboard = () => {
         })
 
         localStorage.setItem(currentUser, JSON.stringify(mails));
-
-        // if(folderNamePassed === "Inbox"){
-        //     inboxCall()
-        // }
-        // else{
-        //     sentItemsCall()
-        // }
     }
 
     const [mailContent, setMailContent] = useState();

@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import Mail from '../Mail/Mail';
 import {AiFillDelete} from 'react-icons/ai';
 import {ValuesContext} from '../Dashboard/Dashboard';
