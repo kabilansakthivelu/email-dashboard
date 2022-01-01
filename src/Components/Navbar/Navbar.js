@@ -5,6 +5,9 @@ import {FaCopy} from 'react-icons/fa';
 import './Navbar.css';
 
 const Navbar = () => {
+
+    //Static section for displaying icons
+
     return (
         <div className="navbar">
         <div className="navbarIcons">

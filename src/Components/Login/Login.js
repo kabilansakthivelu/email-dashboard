@@ -10,6 +10,8 @@ const Login = () => {
 
     const navigate = useNavigate();
 
+    //Login function where logged in user details are stored in local storage
+
     const login = (e) =>{
         e.preventDefault();
         const email = emailRef.current.value;
@@ -33,6 +35,8 @@ const Login = () => {
         }
     }
 
+    // Setting data to local storage when logged in for the first time
+
     useEffect(()=>{
         if((localStorage.getItem("user1") === null) && (localStorage.getItem("user2") === null)){
             localStorage.setItem("user1", JSON.stringify(userDetails));
@@ -46,6 +50,8 @@ const Login = () => {
             <div className="logInSection">
             <h1 className="pageTitle">Email Dashboard</h1>
 
+            {/* Login form */}
+
             <form className="logInForm" onSubmit={login}>
             <input className="inputField" type="email" id="email" placeholder="Email address" ref={emailRef}/>
             <br />
@@ -53,6 +59,8 @@ const Login = () => {
             <br />
             <button className="signInBtn">Sign In</button>
             </form>
+
+            {/* Test Credentials section */}
 
             <div className="testCredentialsSection">
             <h1 className="sectionTitle">Test credentials:</h1>

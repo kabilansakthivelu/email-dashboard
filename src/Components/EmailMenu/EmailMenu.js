@@ -27,11 +27,17 @@ const EmailMenu = () => {
 
     const allUsers = ["user1", "user2"];
 
+    // Composing new email function
+    
+
      const composeNewMail = (e) =>{
         e.preventDefault();
         const receiver = toRef.current.value;
         const subject = subjectRef.current.value;
         const content = contentRef.current.value;
+
+        // Updating sent items folder
+
         setMails(m => ({ 
             ...m,
             Sent : [...m.Sent, 
@@ -42,6 +48,9 @@ const EmailMenu = () => {
                 content,
             }]
         }))
+
+        // If sender and receiver are same
+
         if(receiver === currentUserEmail){
             setMails(m => ({
             ...m,
@@ -55,10 +64,14 @@ const EmailMenu = () => {
             }]
         }))
         }
+
+        // If receiver is another user and not same as sender
+
         else{
             let alternateUser = allUsers.find((item)=>{
                 return item !== currentUser;
             })
+            if(`test${alternateUser}@gmail.com` === receiver){
             let alternateUserMails = JSON.parse(localStorage.getItem(alternateUser));
             alternateUserMails = {
                 ...alternateUserMails,
@@ -72,6 +85,7 @@ const EmailMenu = () => {
                 }]
             }
             localStorage.setItem(alternateUser, JSON.stringify(alternateUserMails))
+            }
         }
         setShowModal(false);
     }
@@ -97,9 +111,13 @@ const EmailMenu = () => {
             </div>
         </div>
 
+        {/* Modal for composing a new email */}
+
         <Modal isOpen={showModal} onRequestClose={()=>{setShowModal(false)}}>
         <div className="modalContent">
         <h1 className="modalHeader">Compose a new mail</h1>
+
+        {/* New email composing form */}
 
         <form className="newEmailForm" onSubmit={composeNewMail}>
         <input type="email" ref={toRef} required placeholder="To" className="formField"/>

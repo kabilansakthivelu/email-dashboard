@@ -17,6 +17,8 @@ const MailList = () => {
         data = sentData;
     }
 
+    // Sorting emails in the order where last received will be on top of the list
+
     if(data){
     data = data.sort(function (a,b){ return b.id - a.id })
     }
@@ -48,7 +50,13 @@ const MailList = () => {
                 )
             })
             :
+
+            // Placeholder text when folder is empty
+
             <p className="placeHolder">No mails to display</p>
+
+            // Placeholder text when none of the folder was chosen
+
             : 
             <p className="placeHolder">Select a folder (Inbox / Sent items) to view your mails</p>
             }

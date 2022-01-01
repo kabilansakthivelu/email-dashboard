@@ -1,5 +1,5 @@
 .individualMail{
-    @apply float-left
+    @apply float-left 
 }
 .mailContent{
     @apply mt-4 px-6 space-y-2
@@ -8,17 +8,20 @@
     @apply indent-8 pt-10
 }
 .header{
-    @apply bg-gray-400 h-14 flex items-center justify-end
+    @apply bg-gray-600 h-14 flex items-center justify-end
 }
 .logOutBtn{
     @apply border-2 py-1 px-2 rounded-md mr-4 bg-white
 }
 .mailIcon{
-    @apply text-2xl text-slate-900
+    @apply text-2xl text-white
 }
 .unreadMails{
     @apply flex items-center space-x-0 mr-6
 }
 .unreadMailCount{
     @apply border-2 p-1 rounded-full py-2 bg-red-500 border-red-500 text-white
+}
+.placeHolderInMailPage{
+    @apply font-semibold text-lg xl:text-xl mt-20 px-4
 }

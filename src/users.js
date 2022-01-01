@@ -24,7 +24,7 @@ export const userDetails = {Inbox:[{
     user: "User 123",
     Subject: "Test subject 789",
     content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-    isRead : true,
+    isRead : false,
 }
 ],
     Sent:[{

@@ -8,12 +8,17 @@ const Mail = () => {
 
     const navigate = useNavigate();
 
+    // Logout function
+
     const logOut = () =>{
         localStorage.removeItem("currentUser");
+        localStorage.removeItem("currentUserEmail");
         navigate("/");
     }
 
-    const {mailContent, inboxData} = useContext(ValuesContext);
+    const {mailContent, inboxData, folderName} = useContext(ValuesContext);
+
+    // Unread count section
 
     let unreadCount;
     
@@ -26,27 +31,32 @@ const Mail = () => {
     }, 0)
     }
 
-    console.log(unreadCount);
-
     return (
         <>
+
+        {/* Header section */}
+
         <div className="header">
         <div className="unreadMails">
-        <AiFillMail className="mailIcon"/> <sup className="unreadMailCount">{unreadCount}</sup>
+        <AiFillMail className="mailIcon"/>{(unreadCount > 0) && <sup className="unreadMailCount">{unreadCount}</sup> }
         </div>
         <button className="logOutBtn" onClick={logOut}>Log out</button>
         </div>
+
+
+        {/* Individual Email display section */}
+
         <div className="individualMail">
             {mailContent ? 
             (
                 <div className="mailContent">
-                <p><b>From: </b>{mailContent.user}</p>
+                <p><b>{(folderName === "Inbox") ? "From: " : "To: " }</b>{mailContent.user}</p>
                 <p><b>Subject: </b>{mailContent.Subject}</p>
                 <p className="content">{mailContent.content}</p>
                 </div>
             )
             :
-           ""
+           <p className="placeHolderInMailPage">Please select a mail from the left panel to view its content</p>
             }
         </div>
         </>

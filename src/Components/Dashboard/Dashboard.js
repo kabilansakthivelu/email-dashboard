@@ -9,11 +9,15 @@ export const ValuesContext = React.createContext();
 
 const Dashboard = () => {
 
+    // Implemented useContext API for sharing data between components
+
     const currentUser = localStorage.getItem("currentUser");
 
     const [mails, setMails] = useState({});
 
     const [folderName, setFolderName] = useState("");
+
+    const [mailContent, setMailContent] = useState();
 
     useEffect(()=>{
         setMails(JSON.parse(localStorage.getItem(currentUser)));
@@ -24,10 +28,12 @@ const Dashboard = () => {
 
     const inboxCall = () =>{
         setFolderName("Inbox");
+        setMailContent();
     }
 
     const sentItemsCall = () =>{
         setFolderName("Sent");
+        setMailContent();
     }
 
     const deleteMail = (folderNamePassed, id) =>{
@@ -48,10 +54,19 @@ const Dashboard = () => {
         })
     }
 
-    const [mailContent, setMailContent] = useState();
-
     const viewMail = (id, folderName) =>{
         if(folderName === "Inbox"){
+        setMails({
+            ...mails,
+            Inbox : mails.Inbox.map((item)=>{
+                if(item.id === id){
+                    return {...item, isRead: true}
+                }
+                else{
+                    return item;
+                }
+            })
+        })
         setMailContent(inboxData.find((item)=>{
             return item.id === id;
         }))
@@ -62,6 +77,8 @@ const Dashboard = () => {
         })) 
         }
     }
+
+    // If user is in logged in state, then would be displayed with Dashboard or would be displayed with Login page
 
     if(currentUser){
         return (
