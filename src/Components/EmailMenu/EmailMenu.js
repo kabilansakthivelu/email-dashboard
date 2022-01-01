@@ -120,7 +120,11 @@ const EmailMenu = () => {
         {/* New email composing form */}
 
         <form className="newEmailForm" onSubmit={composeNewMail}>
-        <input type="email" ref={toRef} required placeholder="To" className="formField"/>
+        <input type="email" ref={toRef} required placeholder="To" className="formField" list="usersList"/>
+        <datalist id="usersList">
+        <option value="testuser1@gmail.com">testuser1@gmail.com</option>
+        <option value="testuser2@gmail.com">testuser2@gmail.com</option>
+        </datalist>
         <br />
         <input type="email" placeholder="Cc" className="formField"/>
         <br />
