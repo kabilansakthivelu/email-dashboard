@@ -17,7 +17,7 @@
     @apply font-semibold text-lg xl:text-xl px-2 mt-32
 }
 .folderName{
-    @apply font-bold my-6 px-2
+    @apply font-bold my-4 px-2
 }
 .sender, .subject{
     @apply cursor-pointer

@@ -2,6 +2,7 @@ import React, {useState, useContext, useRef, useEffect} from 'react';
 import MailList from '../MailList/MailList';
 import {ValuesContext} from '../Dashboard/Dashboard';
 import Modal from 'react-modal';
+import {user1, user2} from '../../users';
 import './EmailMenu.css';
 
 const EmailMenu = () => {
@@ -24,23 +25,57 @@ const EmailMenu = () => {
 
     const currentUserEmail = localStorage.getItem("currentUserEmail");
 
+    const allUsers = ["user1", "user2"];
+
      const composeNewMail = (e) =>{
         e.preventDefault();
         const receiver = toRef.current.value;
         const subject = subjectRef.current.value;
         const content = contentRef.current.value;
-        setMails({
-            ...mails,
-            Sent : [...mails.Sent, 
+        setMails(m => ({ 
+            ...m,
+            Sent : [...m.Sent, 
             {
                 id : new Date().getTime().toString(),
                 user : receiver,
                 Subject : subject,
                 content,
             }]
-        })
+        }))
+        if(receiver === currentUserEmail){
+            setMails(m => ({
+            ...m,
+            Inbox : [...m.Inbox, 
+            {
+                id : new Date().getTime().toString(),
+                user : receiver,
+                Subject : subject,
+                content,
+                isRead: false,
+            }]
+        }))
+        }
+        else{
+            let alternateUser = allUsers.find((item)=>{
+                return item !== currentUser;
+            })
+            let alternateUserMails = JSON.parse(localStorage.getItem(alternateUser));
+            alternateUserMails = {
+                ...alternateUserMails,
+                Inbox : [...alternateUserMails.Inbox,
+                {
+                    id : new Date().getTime().toString(),
+                user : receiver,
+                Subject : subject,
+                content,
+                isRead: false,
+                }]
+            }
+            localStorage.setItem(alternateUser, JSON.stringify(alternateUserMails))
+        }
         setShowModal(false);
     }
+
 
     useEffect(()=>{
         if(Object.keys(mails).length > 0){
