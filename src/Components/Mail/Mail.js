@@ -25,7 +25,7 @@ const Mail = () => {
             {mailContent ? 
             (
                 <div className="mailContent">
-                <p><b>From: </b>{mailContent.from}</p>
+                <p><b>From: </b>{mailContent.user}</p>
                 <p><b>Subject: </b>{mailContent.Subject}</p>
                 <p className="content">{mailContent.content}</p>
                 </div>

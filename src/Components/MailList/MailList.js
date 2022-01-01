@@ -36,10 +36,10 @@ const MailList = () => {
                 return (
                     <div key={item.id} className={mailClassName}>
                     <div className="senderAndIcon">
-                    <h1 onClick={()=>{viewMail(item.id, folderName)}}><b>{item.from}</b></h1>
+                    <h1 className="sender" onClick={()=>{viewMail(item.id, folderName)}}><b>{item.user}</b></h1>
                     <AiFillDelete className="deleteIcon" onClick={()=>{deleteMail(folderName, item.id)}}/>
                     </div>
-                    <p onClick={()=>{viewMail(item.id, folderName)}}>{item.Subject}</p> 
+                    <p className="subject" onClick={()=>{viewMail(item.id, folderName)}}>{item.Subject}</p> 
                     </div>
                 )
             })

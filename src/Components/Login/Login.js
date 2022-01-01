@@ -20,10 +20,12 @@ const Login = () => {
         }
         if(JSON.stringify(user) === JSON.stringify(user1)){
             localStorage.setItem("currentUser", "user1");
+            localStorage.setItem("currentUserEmail", "testuser1@gmail.com");
             navigate("/dashboard");
         }
         else if(JSON.stringify(user) === JSON.stringify(user2)){
             localStorage.setItem("currentUser", "user2");
+            localStorage.setItem("currentUserEmail", "testuser2@gmail.com");
              navigate("/dashboard");
         }
         else{
@@ -32,8 +34,10 @@ const Login = () => {
     }
 
     useEffect(()=>{
-    localStorage.setItem("user1", JSON.stringify(userDetails));
-    localStorage.setItem("user2", JSON.stringify(userDetails));
+        if((localStorage.getItem("user1") === null) && (localStorage.getItem("user2") === null)){
+            localStorage.setItem("user1", JSON.stringify(userDetails));
+            localStorage.setItem("user2", JSON.stringify(userDetails));
+        }
     })
 
     return (

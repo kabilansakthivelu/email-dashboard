@@ -9,19 +9,19 @@ export const user2 = {
 
 export const userDetails = {Inbox:[{
     id:1,
-    from: "User 123",
+    user: "User 123",
     Subject: "Test subject 123",
     content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
     isRead: true,
 },{
     id:2,
-    from: "User 456",
+    user: "User 456",
     Subject: "Test subject 456",
     content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
     isRead: true,
 },{
     id:3,
-    from: "User 123",
+    user: "User 123",
     Subject: "Test subject 789",
     content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
     isRead : true,
@@ -29,7 +29,7 @@ export const userDetails = {Inbox:[{
 ],
     Sent:[{
     id:1,
-    from: "Test sent items 1",
+    user: "Test sent items 1",
     Subject: "Test subject 123",
     content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
 }]

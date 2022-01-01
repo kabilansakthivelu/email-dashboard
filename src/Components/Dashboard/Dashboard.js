@@ -46,8 +46,6 @@ const Dashboard = () => {
                 return item.id !== id;
             })
         })
-
-        localStorage.setItem(currentUser, JSON.stringify(mails));
     }
 
     const [mailContent, setMailContent] = useState();
@@ -68,7 +66,7 @@ const Dashboard = () => {
     if(currentUser){
         return (
         <div>
-            <ValuesContext.Provider value={{inboxCall, sentItemsCall, inboxData, sentData, folderName, deleteMail, viewMail, mailContent}}>
+            <ValuesContext.Provider value={{inboxCall, sentItemsCall, inboxData, sentData, folderName, deleteMail, viewMail, mailContent, setMails, mails, currentUser}}>
             <Navbar />
             <EmailMenu />
             <MailList/>

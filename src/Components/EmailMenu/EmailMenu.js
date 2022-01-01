@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useRef, useEffect} from 'react';
 import MailList from '../MailList/MailList';
 import {ValuesContext} from '../Dashboard/Dashboard';
 import Modal from 'react-modal';
@@ -6,7 +6,7 @@ import './EmailMenu.css';
 
 const EmailMenu = () => {
 
-    const {inboxCall, sentItemsCall} = useContext(ValuesContext);
+    const {inboxCall, sentItemsCall, mails, setMails, currentUser} = useContext(ValuesContext);
 
     const [showModal, setShowModal] = useState(false);
 
@@ -14,9 +14,40 @@ const EmailMenu = () => {
         setShowModal(true);
     }
 
-    const composeNewMail = (e) =>{
-        e.preventDefault();
+    const closeModal = () =>{
+        setShowModal(false);
     }
+
+    const toRef = useRef();
+    const subjectRef = useRef();
+    const contentRef = useRef();
+
+    const currentUserEmail = localStorage.getItem("currentUserEmail");
+
+     const composeNewMail = (e) =>{
+        e.preventDefault();
+        const receiver = toRef.current.value;
+        const subject = subjectRef.current.value;
+        const content = contentRef.current.value;
+        setMails({
+            ...mails,
+            Sent : [...mails.Sent, 
+            {
+                id : new Date().getTime().toString(),
+                user : receiver,
+                Subject : subject,
+                content,
+            }]
+        })
+        setShowModal(false);
+    }
+
+    useEffect(()=>{
+        if(Object.keys(mails).length > 0){
+        localStorage.setItem(currentUser, JSON.stringify(mails))
+        }
+    }, [mails])
+    
 
     return (
         <>
@@ -36,16 +67,16 @@ const EmailMenu = () => {
         <h1 className="modalHeader">Compose a new mail</h1>
 
         <form className="newEmailForm" onSubmit={composeNewMail}>
-        <input type="text" placeholder="To" className="formField"/>
+        <input type="email" ref={toRef} required placeholder="To" className="formField"/>
         <br />
-        <input type="text" placeholder="Cc" className="formField"/>
+        <input type="email" placeholder="Cc" className="formField"/>
         <br />
-        <input type="text" placeholder="Email Subject" className="formField"/>
+        <input type="text" ref={subjectRef} maxLength="25" required placeholder="Email Subject" className="formField"/>
         <br />
-        <textarea id="" cols="50" rows="5" placeholder="Please write your content here.." className="formField"></textarea>
+        <textarea ref={contentRef} cols="50" rows="5" required placeholder="Please write your content here.." className="formField"></textarea>
         <div>
         <button className="modalBtn">Send</button>
-        <button className="modalBtn">Cancel</button>
+        <button className="modalBtn" onClick={closeModal}>Cancel</button>
         </div>
         </form>
         </div>
