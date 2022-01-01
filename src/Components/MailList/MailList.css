@@ -1,8 +1,8 @@
 .mailList{
-    @apply float-left w-3/12 h-screen bg-gray-200
+    @apply float-left w-3/12 h-screen bg-gray-400
 }
 .singleMailRead{
-    @apply border-2 p-2 rounded-md
+    @apply border-2 p-2 rounded-md bg-gray-300
 }
 .singleMailUnRead{
     @apply border-2 p-2 rounded-md bg-white
@@ -14,7 +14,7 @@
     @apply flex items-center justify-between
 }
 .placeHolder{
-    @apply font-semibold text-lg xl:text-xl px-2 mt-32
+    @apply font-semibold text-lg xl:text-xl mt-32 px-4
 }
 .folderName{
     @apply font-bold my-4 px-2

@@ -8,11 +8,17 @@
     @apply indent-8 pt-10
 }
 .header{
-    @apply bg-gray-200 h-14 flex items-center justify-end
+    @apply bg-gray-400 h-14 flex items-center justify-end
 }
 .logOutBtn{
-    @apply border-2 p-1 rounded-md mr-4 hover:bg-white
+    @apply border-2 py-1 px-2 rounded-md mr-4 bg-white
 }
 .mailIcon{
-    @apply text-2xl mr-6 text-slate-700
+    @apply text-2xl text-slate-900
+}
+.unreadMails{
+    @apply flex items-center space-x-0 mr-6
+}
+.unreadMailCount{
+    @apply border-2 p-1 rounded-full py-2 bg-red-500 border-red-500 text-white
 }

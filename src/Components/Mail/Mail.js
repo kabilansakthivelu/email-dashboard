@@ -13,12 +13,27 @@ const Mail = () => {
         navigate("/");
     }
 
-    const {mailContent} = useContext(ValuesContext);
+    const {mailContent, inboxData} = useContext(ValuesContext);
+
+    let unreadCount;
+    
+    if(inboxData){
+    unreadCount = inboxData.reduce((total, item)=>{
+        if(item.isRead === false){
+            total += 1;
+        }
+        return total;
+    }, 0)
+    }
+
+    console.log(unreadCount);
 
     return (
         <>
         <div className="header">
-        <AiFillMail className="mailIcon"/>
+        <div className="unreadMails">
+        <AiFillMail className="mailIcon"/> <sup className="unreadMailCount">{unreadCount}</sup>
+        </div>
         <button className="logOutBtn" onClick={logOut}>Log out</button>
         </div>
         <div className="individualMail">

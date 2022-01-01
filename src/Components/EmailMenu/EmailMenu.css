@@ -17,11 +17,11 @@
     @apply text-center font-bold text-xl
 }
 .newEmailForm{
-    @apply mx-auto text-center w-10/12 mt-5
+    @apply mx-auto text-center w-10/12 mt-5 bg-gray-200 py-4
 }
 .formField{
     @apply border-2 my-2 rounded-md w-9/12 pl-4 border-gray-400 py-1
 }
 .modalBtn{
-    @apply border-2 p-2 rounded-md
+    @apply border-2 p-2 rounded-md bg-white
 }

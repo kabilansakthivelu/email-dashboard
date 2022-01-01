@@ -17,6 +17,10 @@ const MailList = () => {
         data = sentData;
     }
 
+    if(data){
+    data = data.sort(function (a,b){ return b.id - a.id })
+    }
+
     return (
         <>
         <div className="mailList">
