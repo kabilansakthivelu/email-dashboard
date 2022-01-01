@@ -1,16 +1,20 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import Mail from '../Mail/Mail';
 import {AiFillDelete} from 'react-icons/ai';
+import {ValuesContext} from '../Dashboard/Dashboard';
 import './MailList.css';
 
-const MailList = ({data, folderName, deleteMail}) => {
+const MailList = () => {
 
-    const [mailContent, setMailContent] = useState();
+    const {folderName, deleteMail, inboxData, sentData, viewMail} = useContext(ValuesContext);
 
-    const viewMail = (id) =>{
-        setMailContent(data.find((item)=>{
-            return item.id === id;
-        }))
+    let data = [];
+
+    if(folderName === "Inbox"){
+        data = inboxData;
+    }
+    else{
+        data = sentData;
     }
 
     return (
@@ -18,6 +22,7 @@ const MailList = ({data, folderName, deleteMail}) => {
         <div className="mailList">
         <h1 className="folderName">{folderName}</h1>
             {folderName ?
+            (data.length > 0) ?
             data.map((item)=>{
 
                 let mailClassName;
@@ -29,20 +34,21 @@ const MailList = ({data, folderName, deleteMail}) => {
                 }
 
                 return (
-                    <div key={item.id} className={mailClassName} onClick={()=>{viewMail(item.id)}}>
+                    <div key={item.id} className={mailClassName}>
                     <div className="senderAndIcon">
-                    <h1><b>{item.from}</b></h1>
+                    <h1 onClick={()=>{viewMail(item.id, folderName)}}><b>{item.from}</b></h1>
                     <AiFillDelete className="deleteIcon" onClick={()=>{deleteMail(folderName, item.id)}}/>
                     </div>
-                    <p>{item.Subject}</p> 
+                    <p onClick={()=>{viewMail(item.id, folderName)}}>{item.Subject}</p> 
                     </div>
                 )
             })
+            :
+            <p className="placeHolder">No mails to display</p>
             : 
             <p className="placeHolder">Select a folder (Inbox / Sent items) to view your mails</p>
             }
         </div>
-        <Mail mailContent={mailContent}/>
         </>
     )
 }

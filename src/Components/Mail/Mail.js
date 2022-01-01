@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {AiFillMail} from 'react-icons/ai';
 import {useNavigate} from 'react-router-dom';
+import {ValuesContext} from '../Dashboard/Dashboard';
 import './Mail.css';
 
-const Mail = ({mailContent}) => {
+const Mail = () => {
 
     const navigate = useNavigate();
 
@@ -11,6 +12,8 @@ const Mail = ({mailContent}) => {
         localStorage.removeItem("currentUser");
         navigate("/");
     }
+
+    const {mailContent} = useContext(ValuesContext);
 
     return (
         <>
